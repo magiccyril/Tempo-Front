@@ -1,0 +1,21 @@
+#tempo .button {
+    margin-bottom: 1.25rem;
+}
+
+.ejp-icon {
+    width: 24px;
+}
+
+#ejp .ejp-table .bullet-item {
+    text-align: left;
+}
+#ejp .ejp-table .bullet-item.alert {
+    background-color: #f04124;
+    border-color: #cf2a0e;
+    color: white;
+}
+#ejp .ejp-table .bullet-item.success {
+    background-color: #008cba;
+    border-color: #007095;
+    color: white;
+}
