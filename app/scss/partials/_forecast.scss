@@ -1,0 +1,127 @@
+#forecast {
+  @include grid-column(12);
+
+  .forecast-tempo-day {
+    @include grid-column(12);
+
+    @media #{$small-only} {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+    @media #{$large-up} {
+      @include grid-column(3);
+    }
+  }
+
+  .forecast-tempo-hour-vertical {
+    @include grid-column(1);
+
+    @media #{$small-only} {
+      display: none !important;
+    }
+  }
+
+  .forecast-tempo-hour-horizontal {
+    @include grid-column(12);
+    margin-bottom: 2rem;
+
+    @media #{$medium-up} {
+      display: none !important;
+    }
+  }
+
+
+  .forecast-tempo-counter {
+    @include grid-column(12);
+
+    @media #{$medium-up} {
+      @include grid-column(3);
+    }
+    @media #{$large-up} {
+      @include grid-column(5);
+    }
+  }
+
+  .forecast-tempo-counter-blue {
+    @include button-base;
+    @include button-size($padding:$button-sml);
+    @include button-style($bg:$blue, $radius:true);
+    @include single-transition(background-color);
+  }
+  .forecast-tempo-counter-white {
+    @include button-base;
+    @include button-size($padding:$button-sml);
+    @include button-style($bg:$white, $radius:true);
+    @include single-transition(background-color);
+  }
+  .forecast-tempo-counter-red {
+    @include button-base;
+    @include button-size($padding:$button-sml);
+    @include button-style($bg:$red, $radius:true);
+    @include single-transition(background-color);
+  }
+
+  .forecast-ejp-table {
+    @include grid-column(12);
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+    @media #{$large-up} {
+      @include grid-column(3);
+    }
+
+    ul {
+      @include pricing-table-container;
+    }
+    li {
+      @include pricing-table-bullet;
+      text-align: left;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.title {
+        @include pricing-table-title;
+        border-bottom: none;
+      }
+      &.forecast-ejp-item-ejp {
+        background: $red;
+        color: $white;
+      }
+      &.forecast-ejp-item-not {
+        background: $blue;
+        color: $white;
+      }
+    }
+
+    .forecast-ejp-counter {
+      @include label-base;
+      @include label-size(rem-calc(5 8 5), rem-calc(14));
+      @include label-style($red, $radius:1000px);
+    }
+    .forecast-ejp-counter-zero {
+      @include label-base;
+      @include label-size(rem-calc(5 8 5), rem-calc(14));
+      @include label-style($white, $radius:1000px);
+    }
+
+    .ejp-icon {
+      width: 24px;
+    }
+  }
+
+  .forecast-ejp-ads {
+    display: none;
+
+    @media #{$large-up} {
+      @include grid-column(3);
+      display: block;
+    }
+  }
+}

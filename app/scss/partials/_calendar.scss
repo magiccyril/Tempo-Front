@@ -1,0 +1,102 @@
+#calendar {
+  @include grid-column(12);
+
+  .calendar-nav {
+    @include grid-column(12);  
+    ul {
+      list-style: none;
+      margin: 0;
+      text-align: center;
+    }
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      &.current {
+        font-size: 1rem;
+      }
+      &.prev, &.next {
+        font-size: 0.75rem;
+      }
+
+      @media #{$medium-up} {
+        margin: 0 2rem;
+
+        &.current {
+        font-size: 2rem;
+        }
+        &.prev, &.next {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .calendar-type {
+    @include grid-column(12);
+    text-align: center;
+
+    .switch {
+      @include switch;
+      @include switch-size($switch-height-sml);
+      label { @include radius(4px); }
+      label:after { @include radius(3px); }
+
+      display: inline-block;
+      font-size: rem-calc(11);
+      margin: 0 1rem;
+      text-align: center;
+
+      label {
+        overflow: hidden;
+      }
+    }
+  }
+
+  table {
+    @include grid-column(12);
+    table-layout: fixed;
+    padding: 0;
+
+    td {
+      background: $calendar-out;
+      height: 1rem;
+      text-align: center;
+      vertical-align: middle;
+      width: 1rem;
+      
+
+      @media #{$medium-up} {
+        height: 8rem;
+        width: 8rem;
+      }
+
+      .day {
+        display: block;
+        font-size: $h4-font-size - $h4-font-reduction;
+        @media #{$medium-up} {
+          font-size: $h2-font-size - $h2-font-reduction;
+          margin-bottom: 1rem;
+        }
+      }
+      .color {
+        display: block;
+        font-size: 0.6rem;
+        @media #{$medium-up} {
+          font-size: 1rem;
+        }
+      }
+
+      &.blue {
+        background: $blue;
+        color: $white;
+      }
+      &.white {
+        background: #FFF;
+      }
+      &.red {
+        background: $red;
+        color: $white;
+      }
+    }
+  }
+}

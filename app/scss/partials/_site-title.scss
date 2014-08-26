@@ -1,0 +1,38 @@
+#site-title {
+  @include grid-column(12);
+
+  background-color: $blue;
+  border-top: 1rem solid darken($blue, 10);
+
+  h1 {
+    @extend %josefin;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @media #{$medium-up} {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    @media #{$small-only} {
+      display: none !important;
+    }
+    @media #{$medium-up} {
+      margin-top: -0.5rem;
+    }
+  }
+
+  &.site-title-white {
+    background-color: $white;
+    border-top: 1rem solid darken($white, 10);
+
+    h1 {
+      color: $body-font-color;
+    }
+  }
+  &.site-title-red {
+    background-color: $red;
+    border-top: 1rem solid darken($red, 10);
+  }
+}

@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) css/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) css/app.css -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <div class="row row-no-margin">
+      <div id="site-title" class="">
+        <h1>EDF Tempo - EJP</h1>
+        <h2 class="h6">La couleur du jour de votre abonnement EDF Tempo et EJP, et celle du lendemain, tous les jours, dès 17h.</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="forecast">
+        <h2 class="h6">Prévision</h2>
+        <h3 class="h2">Tempo</h3>
+
+        <div class="row" id="forecast-tempo">
+          <div class="forecast-tempo-day">
+            <img src="http://placehold.it/253x175"><br/>
+            Aujourd'hui,<br/>jeudi 21 aout 2014
+          </div>
+          <div class="forecast-tempo-day">
+            <img src="http://placehold.it/253x175"><br/>
+            Demain,<br/>vendredi 22 aout 2014
+          </div>
+          <div class="forecast-tempo-hour-vertical">
+            <img src="http://placehold.it/64x175">
+          </div>
+          <div class="forecast-tempo-hour-horizontal">
+            <img src="http://placehold.it/450x64">
+          </div>
+          <div class="forecast-tempo-counter">
+              <a href="#" class="forecast-tempo-counter-blue">300 jours bleu</a> jusqu'au 31 aout.<br/>
+              <a href="#" class="forecast-tempo-counter-white">43 jours blanc</a> jusqu'au 31 avril.<br/>
+              <a href="#" class="forecast-tempo-counter-red">22 jours rouge</a> jusqu'au 31 mars.
+          </div>
+        </div>
+
+        <h3 class="h2">EJP</h3>
+        <div class="row" id="forecast-ejp">
+          <div class="forecast-ejp-table">
+            <ul>
+              <li class="title">Aujourd'hui,<br/>jeudi 21 aout 2014</li>
+              <li class="forecast-ejp-item-ejp"><img src="img/exclamation.svg" alt="Jour EJP" class="ejp-icon" />EJP</span> Nord</li>
+              <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Zone PACA</li>
+              <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Ouest</li>
+              <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Sud</li>
+            </ul>
+          </div>
+          <div class="forecast-ejp-table">
+            <ul>
+              <li class="title">Demain,<br/>vendredi 22 aout 2014</li>
+              <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Nord</li>
+              <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Zone PACA</li>
+              <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Ouest</li>
+              <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Sud</li>
+            </ul>
+          </div>
+          <div class="forecast-ejp-table">
+            <ul>
+              <li class="title">Restant<br/><small>du 1 novembre au 31 mars</small></li>
+              <li class=""><span class="forecast-ejp-counter">2</span> Nord</li>
+              <li class=""><span class="forecast-ejp-counter-zero">0</span> Zone PACA</li>
+              <li class=""><span class="forecast-ejp-counter-zero">0</span> Ouest</li>
+              <li class=""><span class="forecast-ejp-counter-zero">0</span> Sud</li>
+            </ul>
+          </div>
+
+          <div class="forecast-ejp-ads">
+            <img src="http://placehold.it/300x250">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="calendar">
+        <h2 class="h6">Calendrier</h2>
+
+        <div class="calendar-nav">
+          <ul>
+            <li class="prev">&lt; Septembre</li>
+            <li class="current">Novembre 2014</li>
+            <li class="next">Décembre &gt;</li>
+          </ul>
+        </div>
+        <div class="calendar-type">
+          <form>
+            <div class="switch">
+              Tempo
+              <input id="calendar-type-ejp-tempo" type="radio" name="calendar-type" checked>
+              <label for="calendar-type-ejp-tempo">Tempo</label>
+            </div>
+            <div class="switch">
+              EJP Nord
+              <input id="calendar-type-ejp-north" type="radio" name="calendar-type">
+              <label for="calendar-type-ejp-north">EJP Nord</label>
+            </div>
+            <div class="switch">
+              EJP PACA
+              <input id="calendar-type-ejp-paca" type="radio" name="calendar-type">
+              <label for="calendar-type-ejp-paca">EJP PACA</label>
+            </div>
+            <div class="switch">
+              EJP Ouest
+              <input id="calendar-type-ejp-west" type="radio" name="calendar-type">
+              <label for="calendar-type-ejp-west">EJP Ouest</label>
+            </div>
+            <div class="switch">
+              EJP Sud
+              <input id="calendar-type-ejp-south" type="radio" name="calendar-type">
+              <label for="calendar-type-ejp-south">EJP Sud</label>
+            </div>
+          </form>
+        </div>
+
+        <table>
+          <tbody>
+            <tr>
+              <td class="out"></td>
+              <td class="out"></td>
+              <td class="out"></td>
+              <td class="out"></td>
+              <td class="blue"><span class="day">1</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">2</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">3</span><span class="color"> Bleu</span></td>
+            </tr>
+            <tr>
+              <td class="blue"><span class="day">4</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">5</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">6</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">8</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">9</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">10</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">11</span><span class="color"> Bleu</span></td>
+            </tr>
+            <tr>
+              <td class="blue"><span class="day">12</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">14</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">16</span><span class="color"> Bleu</span></td>
+              <td class="red"><span class="day">17</span><span class="color"> Rouge</span></td>
+              <td class="blue"><span class="day">18</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">19</span><span class="color"> Bleu</span></td>
+              <td class="blue"><span class="day">20</span><span class="color"> Bleu</span></td>
+            </tr>
+            <tr>
+              <td class="blue"><span class="day">21</span><span class="color"> Bleu</span></td>
+              <td class="white"><span class="day">19</span><span class="color"> Blanc</span></td>
+              <td class="blue"><span class="day">20</span><span class="color"> Bleu</span></td>
+              <td class="no today"><mark><span class="day">21</span><span class="color"> -</span></mark></td>
+              <td class="no"><span class="day">22</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">23</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">24</span><span class="color"> -</span></td>
+            </tr>
+            <tr>
+              <td class="no"><span class="day">25</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">26</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">27</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">28</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">29</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">30</span><span class="color"> -</span></td>
+              <td class="no"><span class="day">31</span><span class="color"> -</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="content">
+        <h2 class="h6">À propos</h2>
+
+        <h3>EDF Tempo</h3>
+        <p>Tempo est un abonnement EDF. Les jours de l’année sont divisés en trois couleurs : bleu (le moins chère), blanc et rouge (le plus chère).  Et viennent s’ajouter à cela des heures creuses et des heures pleines.</p>
+        <p>Répartition des jours dans l’année :</p>
+        <ul><li>22 jours rouges répartis entre le 1er novembre et 31 mars, hors samedi, dimanche et jours fériés.</li><li>43 jours blancs d’octobre à mai, hors dimanche.</li><li>300 jours bleus (301 lors d’année bissextile).</li></ul>
+        <p>Une journée Tempo commence à 6h du matin et est découpée en deux périodes :</p>
+        <ul><li>Période heures pleines : de 6h à 22h.</li><li>Période heures creuses : de 22h à 6h.</li></ul>
+        <p>Pour plus d’information, consultez le <a href="http://bleuciel.edf.com/abonnement-et-contrat/les-prix/les-prix-de-l-electricite/option-tempo/en-savoir-plus-52429.html">site officiel EDF Tempo</a>.</p>
+
+        <h3>EJP</h3>
+        <p>Lorem ipsum</h3>
+      </div>
+      <div id="contact">
+        <h2 class="h6">Contact</h2>
+        <form>
+          <div class="row">
+            <div class="form-item">
+              <label>Votre nom</label>
+              <input type="text" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-item">
+              <label>Votre adresse email</label>
+              <input type="email" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-item">
+              <label>Message</label>
+              <textarea rows="10" required></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-item text-center">
+              <input type="submit" value="Envoyer" class="submit" />
+              <small>ou envoyer un email à <a href="mailto:tempo@18ruedivona.eu">tempo@18ruedivona.eu</a></small>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- build:js(.) js/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) js/scripts.js -->
+    <script src="js/app.js"></script>
+    <script src="js/directives/calendar.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>
