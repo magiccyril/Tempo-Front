@@ -1,0 +1,7 @@
+<table>
+  <tbody>
+    <tr ng-repeat="week in numberOfWeekInMonth(date)">
+      <td ng-repeat="beforeDate in getOutDaysOfFirstWeekOfMonth(date)" class="out"></td>
+    </tr>
+  </tbody>
+</table>

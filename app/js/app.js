@@ -15,6 +15,5 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'calendar'
+    'ngTouch'
   ]);
