@@ -9,7 +9,8 @@
     "angular-resource": "v1.3.0-beta.19",
     "angular-route": "v1.3.0-beta.19",
     "angular-sanitize": "v1.3.0-beta.19",
-    "angular-touch": "v1.3.0-beta.19"
+    "angular-touch": "v1.3.0-beta.19",
+    "moment": "~2.8.2"
   },
   "devDependencies": {
     "angular-mocks": "v1.3.0-beta.19",

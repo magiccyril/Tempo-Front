@@ -15,11 +15,13 @@ angular.module('tempoApp')
       'Karma'
     ];
 
-    $scope.calendarDate = new Date();
     $scope.calendarEvents = [];
-  })
-  .directive('divonaCalendar', function() {
-    return {
-      template: 'Hello calendar'
+
+    $scope.changeMonth = function (momentDate) {
+      $scope.calendarDate   = momentDate;
+      $scope.previousMonth  = moment(momentDate).subtract(1, 'month');
+      $scope.nextMonth      = moment(momentDate).add(1, 'month');
     };
-  });;
+
+    $scope.changeMonth(moment());
+  });
