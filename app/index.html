@@ -24,7 +24,7 @@
 
     <div class="row">
       <div id="forecast">
-        <h2 class="h6">Prévision</h2>
+        <h2 class="h6"><i class="icon-gauge"></i>Prévision</h2>
         <h3 class="h2">Tempo</h3>
 
         <div class="row" id="forecast-tempo">
@@ -80,7 +80,14 @@
           </div>
 
           <div class="forecast-ejp-ads">
-            <img src="http://placehold.it/300x250">
+            <!-- Tempo-v2
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-1301406530258142"
+                 data-ad-slot="5314168450"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+            <img src="https://storage.googleapis.com/support-kms-prod/SNP_6EB8C8AA85A5443CB6FEF7DE5934A23154FA_2922349_en_v1" />
           </div>
         </div>
       </div>
@@ -88,40 +95,52 @@
 
     <div class="row">
       <div id="calendar">
-        <h2 class="h6">Calendrier</h2>
+        <h2 class="h6"><i class="icon-calendar"></i>Calendrier</h2>
 
         <div class="calendar-nav">
-          <ul>
-            <li class="prev" ng-click="changeMonth(previousMonth)">&lt; {{ previousMonth.format('MMMM') }}</li>
-            <li class="current">{{ calendarDate.format('MMMM YYYY') }}</li>
-            <li class="next" ng-click="changeMonth(nextMonth)">{{ nextMonth.format('MMMM') }} &gt;</li>
-          </ul>
+          <h3>
+            <span class="calendar-nav-month">
+              <a href ng-click="changeMonth(previousMonth)"><i class="icon-left"></i></a>
+              <span>{{ calendarDate.format('MMMM') }}</span>
+              <a href ng-click="changeMonth(nextMonth)"><i class="icon-right"></i></a>
+            </span>
+            <span class="calendar-nav-year">
+              <a href ng-click="changeMonth(previousYear)"><i class="icon-left"></i></a>
+              <span>{{ calendarDate.format('YYYY') }}</span>
+              <a href ng-click="changeMonth(nextYear)"><i class="icon-right"></i></a>
+            </span>
+          </h3>
+          <h4 class="h6 calendar-nav-today">
+            <a href ng-click="changeMonth(today)" ng-show="today.format('YYYYMM') != calendarDate.format('YYYYMM')">Revenir à aujourd'hui</a>
+            <span ng-hide="today.format('YYYYMM') != calendarDate.format('YYYYMM')">&nbsp;</span>
+          </h4>
         </div>
         <div class="calendar-type">
-          <form>
+          <h4 class="calendar-type-summary" ng-click="onCalendarTypeClick()">{{ calendarTypeFormat(calendarType) }} <i class="icon-cog"></i></h4>
+          <form ng-show="showCalendarType">
             <div class="switch">
               Tempo
-              <input id="calendar-type-ejp-tempo" type="radio" name="calendar-type" checked>
+              <input id="calendar-type-ejp-tempo" type="radio" name="calendar-type" ng-model="calendarType" ng-change="onCalendarTypeChange()" value="tempo">
               <label for="calendar-type-ejp-tempo">Tempo</label>
             </div>
             <div class="switch">
               EJP Nord
-              <input id="calendar-type-ejp-north" type="radio" name="calendar-type">
+              <input id="calendar-type-ejp-north" type="radio" name="calendar-type" ng-model="calendarType" ng-change="onCalendarTypeChange()" value="ejp-north">
               <label for="calendar-type-ejp-north">EJP Nord</label>
             </div>
             <div class="switch">
               EJP PACA
-              <input id="calendar-type-ejp-paca" type="radio" name="calendar-type">
+              <input id="calendar-type-ejp-paca" type="radio" name="calendar-type" ng-model="calendarType" ng-change="onCalendarTypeChange()" value="ejp-paca">
               <label for="calendar-type-ejp-paca">EJP PACA</label>
             </div>
             <div class="switch">
               EJP Ouest
-              <input id="calendar-type-ejp-west" type="radio" name="calendar-type">
+              <input id="calendar-type-ejp-west" type="radio" name="calendar-type" ng-model="calendarType" ng-change="onCalendarTypeChange()" value="ejp-west">
               <label for="calendar-type-ejp-west">EJP Ouest</label>
             </div>
             <div class="switch">
               EJP Sud
-              <input id="calendar-type-ejp-south" type="radio" name="calendar-type">
+              <input id="calendar-type-ejp-south" type="radio" name="calendar-type" ng-model="calendarType" ng-change="onCalendarTypeChange()" value="ejp-south">
               <label for="calendar-type-ejp-south">EJP Sud</label>
             </div>
           </form>
@@ -133,7 +152,7 @@
 
     <div class="row">
       <div id="content">
-        <h2 class="h6">À propos</h2>
+        <h2 class="h6"><i class="icon-quote"></i>À propos</h2>
 
         <h3>EDF Tempo</h3>
         <p>Tempo est un abonnement EDF. Les jours de l’année sont divisés en trois couleurs : bleu (le moins chère), blanc et rouge (le plus chère).  Et viennent s’ajouter à cela des heures creuses et des heures pleines.</p>
@@ -147,7 +166,7 @@
         <p>Lorem ipsum</h3>
       </div>
       <div id="contact">
-        <h2 class="h6">Contact</h2>
+        <h2 class="h6"><i class="icon-comment"></i>Contact</h2>
         <form>
           <div class="row">
             <div class="form-item">
@@ -197,10 +216,12 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) js/scripts.js -->
+    <script src="js/moment.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/main.js"></script>
     <script src="js/directives/calendar.js"></script>
     <!-- endbuild -->
 
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </body>
 </html>
