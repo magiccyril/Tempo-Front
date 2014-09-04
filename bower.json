@@ -5,8 +5,6 @@
     "foundation": "zurb/bower-foundation",
     "angular": "v1.3.0-beta.19",
     "angular-animate": "v1.3.0-beta.19",
-    "angular-cookies": "v1.3.0-beta.19",
-    "angular-resource": "v1.3.0-beta.19",
     "angular-route": "v1.3.0-beta.19",
     "angular-sanitize": "v1.3.0-beta.19",
     "angular-touch": "v1.3.0-beta.19",

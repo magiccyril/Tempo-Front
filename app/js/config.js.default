@@ -1,0 +1,7 @@
+'use strict';
+
+angular.module('tempoApp')
+  .constant('CONTACT_SUBJECT', '')
+  .constant('CONTACT_SENDTO_EMAIL', '')
+  .constant('CONTACT_SENDTO_NAME', '')
+  .constant('MANDRILL_APIKEY', '');

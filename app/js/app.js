@@ -11,8 +11,6 @@
 angular
   .module('tempoApp', [
     'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
