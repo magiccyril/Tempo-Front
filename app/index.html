@@ -30,23 +30,25 @@
 
           <div class="row" id="forecast-tempo">
             <div class="forecast-tempo-day">
-              <img src="http://placehold.it/253x175"><br/>
-              Aujourd'hui,<br/>jeudi 21 aout 2014
+              <img src="http://placehold.it/253x175&amp;text=-"><br/>
+              Aujourd'hui,<br/>{{ today.format('dddd DD MMMM YYYY') }}
             </div>
             <div class="forecast-tempo-day">
-              <img src="http://placehold.it/253x175"><br/>
-              Demain,<br/>vendredi 22 aout 2014
+              <img src="http://placehold.it/253x175&amp;text=-"><br/>
+              Demain,<br/>{{ tomorrowDate.format('dddd DD MMMM YYYY') }}
             </div>
             <div class="forecast-tempo-hour-vertical">
-              <img src="http://placehold.it/64x175">
+              <img src="http://placehold.it/64x175&amp;text=Pleines" ng-hide="isOffPeak()">
+              <img src="http://placehold.it/64x175&amp;text=Creuses" ng-show="isOffPeak()">
             </div>
             <div class="forecast-tempo-hour-horizontal">
-              <img src="http://placehold.it/450x64">
+              <img src="http://placehold.it/450x64&amp;text=Pleines" ng-hide="isOffPeak()">
+              <img src="http://placehold.it/450x64&amp;text=Creuses" ng-show="isOffPeak()">
             </div>
             <div class="forecast-tempo-counter">
-                <a href="#" class="forecast-tempo-counter-blue">300 jours bleu</a> jusqu'au 31 aout.<br/>
-                <a href="#" class="forecast-tempo-counter-white">43 jours blanc</a> jusqu'au 31 avril.<br/>
-                <a href="#" class="forecast-tempo-counter-red">22 jours rouge</a> jusqu'au 31 mars.
+                <a href="#" class="forecast-tempo-counter-blue">{{ tempoCounter.blue }} jours bleu</a> jusqu'au 31 aout.<br/>
+                <a href="#" class="forecast-tempo-counter-white">{{ tempoCounter.white }} jours blanc</a> jusqu'au 30 avril.<br/>
+                <a href="#" class="forecast-tempo-counter-red">{{ tempoCounter.red }} jours rouge</a> jusqu'au 31 mars.
             </div>
           </div>
 
@@ -73,10 +75,10 @@
             <div class="forecast-ejp-table">
               <ul>
                 <li class="title">Restant<br/><small>du 1 novembre au 31 mars</small></li>
-                <li class=""><span class="forecast-ejp-counter">2</span> Nord</li>
-                <li class=""><span class="forecast-ejp-counter-zero">0</span> Zone PACA</li>
-                <li class=""><span class="forecast-ejp-counter-zero">0</span> Ouest</li>
-                <li class=""><span class="forecast-ejp-counter-zero">0</span> Sud</li>
+                <li class=""><span ng-class="{'forecast-ejp-counter': ejpCounter.north > 0, 'forecast-ejp-counter-zero': ejpCounter.north == 0}">{{ ejpCounter.north }}</span> Nord</li>
+                <li class=""><span ng-class="{'forecast-ejp-counter': ejpCounter.paca > 0, 'forecast-ejp-counter-zero': ejpCounter.paca == 0}">{{ ejpCounter.paca }}</span> Zone PACA</li>
+                <li class=""><span ng-class="{'forecast-ejp-counter': ejpCounter.west > 0, 'forecast-ejp-counter-zero': ejpCounter.west == 0}">{{ ejpCounter.west }}</span> Ouest</li>
+                <li class=""><span ng-class="{'forecast-ejp-counter': ejpCounter.south > 0, 'forecast-ejp-counter-zero': ejpCounter.south == 0}">{{ ejpCounter.south }}</span> Sud</li>
               </ul>
             </div>
 
@@ -235,6 +237,7 @@
     <script src="js/services/mandrill.js"></script>
     <script src="js/services/tempo.js"></script>
     <script src="js/services/ejp.js"></script>
+    <script src="js/services/forecast.js"></script>
     <!-- endbuild -->
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

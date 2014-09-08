@@ -54,6 +54,6 @@ angular.module('tempoApp').controller('ContactCtrl', ['$scope', 'Mandrill', 'CON
     $scope.resetForm = function () {
       $scope.contactStatus.sent = false;
       $scope.message = '';
-    }
+    };
   }
 ]);

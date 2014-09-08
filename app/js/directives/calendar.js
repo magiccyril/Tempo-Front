@@ -18,12 +18,18 @@ angular.module('tempoApp')
             calendar[i] = [];
 
             for (var j = 0; j < 7; j++) {
+              var data = '-';
+
               var isGoodMonth = date.month() === inputMomentDate.month();
               var cssClass = 'empty';
               if (!isGoodMonth) {
                 cssClass = 'out';
               }
-              var data = '-';
+
+              if (scope.events[date.format('YYYY-MM-DD')]) {
+                cssClass = scope.events[date.format('YYYY-MM-DD')].raw;
+                data     = scope.events[date.format('YYYY-MM-DD')].formated;
+              }
 
               calendar[i].push({
                 date: date,
@@ -40,6 +46,10 @@ angular.module('tempoApp')
         }
 
         scope.$watch('date', function() {
+          scope.calendar = getCalendar(scope.date);
+        });
+
+        scope.$watch('events', function() {
           scope.calendar = getCalendar(scope.date);
         });
       },

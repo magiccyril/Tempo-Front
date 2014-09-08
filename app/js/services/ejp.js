@@ -8,38 +8,59 @@
  * Factory in the tempoApp.
  */
 angular.module('tempoApp')
-  .constant('EJP_API_URL', '')
-  .constant('EJP_API_FROM_MONTH', 9)
+  .constant('EJP_API_URL', 'http://411279a3a8.url-de-test.ws')
+  .constant('EJP_API_FROM_MONTH', 10)
   .constant('EJP_API_FROM_DAY', 1)
-  .factory('EJP', ['$http', '$q', 'EJP_API_URL', 'EJP_API_FROM_MONTH', 'EJP_API_FROM_DAY'
-  function($http, $q, EJP_API_URL, EJP_API_FROM_MONTH, EJP_API_FROM_DAY) {
-    var getCounter = function () {
-      var fromDate = moment();
-      fromDate.month(EJP_API_FROM_MONTH - 1);
-      fromDate.date(EJP_API_FROM_DAY);
+  .constant('EJP_API_COUNT', 22)
+  .factory('EJP', [
+    '$http',
+    '$q',
+    'EJP_API_URL',
+    'EJP_API_FROM_MONTH',
+    'EJP_API_FROM_DAY',
+    'EJP_API_COUNT',
+    function ($http, $q, EJP_API_URL, EJP_API_FROM_MONTH, EJP_API_FROM_DAY, EJP_API_COUNT) {
+      var getCounter = function () {
+        var fromDate = moment();
+        fromDate.month(EJP_API_FROM_MONTH - 1);
+        fromDate.date(EJP_API_FROM_DAY);
 
-      return $http.get(EJP_API_URL + '/ejp/count/' + fromDate.format('YYYY-MM-DD'));
-    };
+        return $http.get(EJP_API_URL + '/ejp/count/' + fromDate.format('YYYY-MM-DD')).then(function (response) {
+            return {
+              'north': EJP_API_COUNT - response.data.north,
+              'paca': EJP_API_COUNT - response.data.paca,
+              'west': EJP_API_COUNT - response.data.west,
+              'south': EJP_API_COUNT - response.data.south
+            };
+          });
+      };
 
-    var getZoneMonth = function (zone, date) {
-      return $http.get(EJP_API_URL + '/ejp/' + date.format('YYYY-MM'))
-        .then(function (response) {
-          var data = response.data;
+      var getZoneMonth = function (zone, date) {
+        return $http.get(EJP_API_URL + '/ejp/' + date.format('YYYY-MM'))
+          .then(function (response) {
+            var data = response.data;
 
-          var formatedData = {};
-          for (var i = 0; i < data.length; i++) {
-            var day = data[i];
-            var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
-            formatedData[dayDate.format('YYYY-MM-DD')] = day.zones[zone];
-          }
+            var formatedData = {};
+            for (var i = 0; i < data.length; i++) {
+              var day = data[i];
+              var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
 
-          return formatedData;
-        });
-    };
+              var raw = day.zones[zone] ? 'red' : 'white';
+              var format = day.zones[zone] ? 'EJP' : '';
 
-    return {
-      'getCounter': getCounter,
-      'getMonth': getZoneMonth
-    };
-  }
-]);
+              formatedData[dayDate.format('YYYY-MM-DD')] = {
+                raw: raw,
+                format: format
+              };
+            }
+
+            return formatedData;
+          });
+      };
+
+      return {
+        'getCounter': getCounter,
+        'getMonth': getZoneMonth
+      };
+    }
+  ]);
