@@ -2,7 +2,7 @@
   "name": "Tempo",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "zurb/bower-foundation",
+    "foundation": "zurb/bower-foundation#5.3.3",
     "angular": "v1.3.0-beta.19",
     "angular-animate": "v1.3.0-beta.19",
     "angular-route": "v1.3.0-beta.19",
