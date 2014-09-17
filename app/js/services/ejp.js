@@ -8,7 +8,7 @@
  * Factory in the tempoApp.
  */
 angular.module('tempoApp')
-  .constant('EJP_API_URL', 'http://411279a3a8.url-de-test.ws')
+  .constant('EJP_API_URL', 'http://api.tempo.18ruedivona.eu')
   .constant('EJP_API_FROM_MONTH', 10)
   .constant('EJP_API_FROM_DAY', 1)
   .constant('EJP_API_COUNT', 22)
@@ -45,7 +45,7 @@ angular.module('tempoApp')
               var day = data[i];
               var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
 
-              var raw = day.zones[zone] ? 'red' : 'white';
+              var raw = day.zones[zone];
               var format = day.zones[zone] ? 'EJP' : '';
 
               formatedData[dayDate.format('YYYY-MM-DD')] = {

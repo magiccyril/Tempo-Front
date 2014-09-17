@@ -3,13 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation</title>
+    <title>EDF Tempo &amp; EJP</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) css/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
     <!-- build:css(.tmp) css/app.css -->
     <link rel="stylesheet" href="css/app.css">
     <!-- endbuild -->
@@ -18,7 +13,7 @@
     <div ng-controller="MainCtrl">
       <div class="row row-no-margin">
         <div id="site-title" class="">
-          <h1>EDF Tempo - EJP</h1>
+          <h1>EDF Tempo &amp; EJP</h1>
           <h2 class="h6">La couleur du jour de votre abonnement EDF Tempo et EJP, et celle du lendemain, tous les jours, dès 17h.</h2>
         </div>
       </div>
@@ -30,25 +25,31 @@
 
           <div class="row" id="forecast-tempo">
             <div class="forecast-tempo-day">
-              <img src="http://placehold.it/253x175&amp;text=-"><br/>
+              <span class="forecast-tempo-day-undefined" ng-show="!forecast.today.tempo">Non déterminé</span>
+              <span class="forecast-tempo-day-blue" ng-show="'blue' == forecast.today.tempo.raw">Bleu</span>
+              <span class="forecast-tempo-day-white" ng-show="'white' == forecast.today.tempo.raw">Blanc</span>
+              <span class="forecast-tempo-day-red" ng-show="'red' == forecast.today.tempo.raw">Rouge</span>
               Aujourd'hui,<br/>{{ today.format('dddd DD MMMM YYYY') }}
             </div>
             <div class="forecast-tempo-day">
-              <img src="http://placehold.it/253x175&amp;text=-"><br/>
+              <span class="forecast-tempo-day-undefined" ng-show="!forecast.tomorrow.tempo">Non déterminé</span>
+              <span class="forecast-tempo-day-blue" ng-show="'blue' == forecast.tomorrow.tempo.raw">Bleu</span>
+              <span class="forecast-tempo-day-white" ng-show="'white' == forecast.tomorrow.tempo.raw">Blanc</span>
+              <span class="forecast-tempo-day-red" ng-show="'red' == forecast.tomorrow.tempo.raw">Rouge</span>
               Demain,<br/>{{ tomorrowDate.format('dddd DD MMMM YYYY') }}
             </div>
             <div class="forecast-tempo-hour-vertical">
-              <img src="http://placehold.it/64x175&amp;text=Pleines" ng-hide="isOffPeak()">
-              <img src="http://placehold.it/64x175&amp;text=Creuses" ng-show="isOffPeak()">
+              <span class="forecast-tempo-hour-vertical-peak" ng-hide="isOffPeak()" title="Heures pleines">Heures pleines</span>
+              <span class="forecast-tempo-hour-vertical-offpeak" ng-show="isOffPeak()" title="Heures creuses">Heures creuses</span>
             </div>
             <div class="forecast-tempo-hour-horizontal">
-              <img src="http://placehold.it/450x64&amp;text=Pleines" ng-hide="isOffPeak()">
-              <img src="http://placehold.it/450x64&amp;text=Creuses" ng-show="isOffPeak()">
+              <span class="forecast-tempo-hour-horizontal-peak" ng-hide="isOffPeak()" title="Heures pleines">Heures pleines</span>
+              <span class="forecast-tempo-hour-horizontal-offpeak" ng-show="isOffPeak()" title="Heures creuses">Heures creuses</span>
             </div>
             <div class="forecast-tempo-counter">
-                <a href="#" class="forecast-tempo-counter-blue">{{ tempoCounter.blue }} jours bleu</a> jusqu'au 31 aout.<br/>
-                <a href="#" class="forecast-tempo-counter-white">{{ tempoCounter.white }} jours blanc</a> jusqu'au 30 avril.<br/>
-                <a href="#" class="forecast-tempo-counter-red">{{ tempoCounter.red }} jours rouge</a> jusqu'au 31 mars.
+                <span class="forecast-tempo-counter-blue">{{ tempoCounter.blue }} jours bleu</span> jusqu'au 31 aout.<br/>
+                <span class="forecast-tempo-counter-white">{{ tempoCounter.white }} jours blanc</span> jusqu'au 30 avril.<br/>
+                <span class="forecast-tempo-counter-red">{{ tempoCounter.red }} jours rouge</span> jusqu'au 31 mars.
             </div>
           </div>
 
@@ -56,20 +57,20 @@
           <div class="row" id="forecast-ejp">
             <div class="forecast-ejp-table">
               <ul>
-                <li class="title">Aujourd'hui,<br/>jeudi 21 aout 2014</li>
-                <li class="forecast-ejp-item-ejp"><img src="img/exclamation.svg" alt="Jour EJP" class="ejp-icon" />EJP</span> Nord</li>
-                <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Zone PACA</li>
-                <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Ouest</li>
-                <li class="forecast-ejp-item-not"><img src="img/valid.svg" alt="Jour NON EJP" class="ejp-icon" /></span> Sud</li>
+                <li class="title">Aujourd'hui,<br/>{{ today.format('dddd DD MMMM YYYY') }}</li>
+                <li ejp-forecast-item ng-model="forecast.today.ejp.north">Nord</li>
+                <li ejp-forecast-item ng-model="forecast.today.ejp.paca">Zone PACA</li>
+                <li ejp-forecast-item ng-model="forecast.today.ejp.west">Ouest</li>
+                <li ejp-forecast-item ng-model="forecast.today.ejp.south">Sud</li>
               </ul>
             </div>
             <div class="forecast-ejp-table">
               <ul>
-                <li class="title">Demain,<br/>vendredi 22 aout 2014</li>
-                <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Nord</li>
-                <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Zone PACA</li>
-                <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Ouest</li>
-                <li class=""><img src="img/question.svg" alt="" class="ejp-icon" /> Sud</li>
+                <li class="title">Demain,<br/>{{ tomorrowDate.format('dddd DD MMMM YYYY') }}</li>
+                <li ejp-forecast-item ng-model="forecast.tomorrow.ejp.north">Nord</li>
+                <li ejp-forecast-item ng-model="forecast.tomorrow.ejp.paca">Zone PACA</li>
+                <li ejp-forecast-item ng-model="forecast.tomorrow.ejp.west">Ouest</li>
+                <li ejp-forecast-item ng-model="forecast.tomorrow.ejp.south">Sud</li>
               </ul>
             </div>
             <div class="forecast-ejp-table">
@@ -212,15 +213,7 @@
 
     <!-- build:js(.) js/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
-    <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
-    <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
@@ -234,6 +227,7 @@
     <script src="js/controllers/main.js"></script>
     <script src="js/controllers/contact.js"></script>
     <script src="js/directives/calendar.js"></script>
+    <script src="js/directives/ejpForecastItem.js"></script>
     <script src="js/services/mandrill.js"></script>
     <script src="js/services/tempo.js"></script>
     <script src="js/services/ejp.js"></script>

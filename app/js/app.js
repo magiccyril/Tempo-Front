@@ -10,8 +10,6 @@
  */
 angular
   .module('tempoApp', [
-    'ngAnimate',
-    'ngRoute',
     'ngSanitize',
     'ngTouch'
   ]);

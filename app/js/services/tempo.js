@@ -8,7 +8,7 @@
  * Factory in the tempoApp.
  */
 angular.module('tempoApp')
-  .constant('TEMPO_API_URL', 'http://411279a3a8.url-de-test.ws')
+  .constant('TEMPO_API_URL', 'http://api.tempo.18ruedivona.eu')
   .constant('TEMPO_API_FROM_MONTH', 9)
   .constant('TEMPO_API_FROM_DAY', 1)
   .constant('TEMPO_API_COUNT_BLUE', 300)

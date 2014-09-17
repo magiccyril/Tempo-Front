@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('tempoApp')
-  .constant('calendarConfig', {})
   .directive('calendar', [function() {
     return {
       link: function (scope) {
@@ -58,7 +57,6 @@ angular.module('tempoApp')
         date: '=date',
         events:'=ngModel'
       },
-      templateUrl: '/js/directives/calendar.html',
-      transclude: true
+      templateUrl: '/js/directives/calendar.html'
     };
   }]);

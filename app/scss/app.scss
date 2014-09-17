@@ -37,10 +37,16 @@
   "foundation/components/type",
   "foundation/components/visibility";
 
+@import "compass/typography/text/replacement";
+@import "compass/utilities/sprites";
+
+@import "forecast-tempo/*.png";
+
 @import "components/fonts";
 @import "components/type";
 @import "components/icons";
 @import "components/forms";
+
 .row {
   @include grid-row;
   margin-bottom: 8rem;

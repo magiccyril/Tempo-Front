@@ -81,8 +81,12 @@
       vertical-align: middle;
       width: 1rem;
 
-
       @media #{$medium-up} {
+        height: 6rem;
+        width: 6rem;
+      }
+
+      @media #{$large-up} {
         height: 8rem;
         width: 8rem;
       }
@@ -91,6 +95,10 @@
         display: block;
         font-size: $h4-font-size - $h4-font-reduction;
         @media #{$medium-up} {
+          font-size: $h3-font-size - $h3-font-reduction;
+          margin-bottom: 0.5rem;
+        }
+        @media #{$large-up} {
           font-size: $h2-font-size - $h2-font-reduction;
           margin-bottom: 1rem;
         }
@@ -99,6 +107,9 @@
         display: block;
         font-size: 0.6rem;
         @media #{$medium-up} {
+          font-size: 0.8rem;
+        }
+        @media #{$large-up} {
           font-size: 1rem;
         }
       }

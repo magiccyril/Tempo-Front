@@ -8,7 +8,8 @@
  * Controller of the tempoApp
  */
 angular.module('tempoApp')
-  .controller('MainCtrl', ['$scope', 'Forecast', 'Tempo', 'EJP', function ($scope, Forecast, Tempo, EJP) {
+  .constant('CALENDAR_MIN_DATE', '2004-09-01')
+  .controller('MainCtrl', ['$scope', 'CALENDAR_MIN_DATE', 'Forecast', 'Tempo', 'EJP', function ($scope, CALENDAR_MIN_DATE, Forecast, Tempo, EJP) {
     $scope.isOffPeak = function () {
       return ((moment().hours >= 0 && moment.hours < 6) || (moment().hours > 22 && moment.hours <= 23));
     };
@@ -74,14 +75,18 @@ angular.module('tempoApp')
     };
 
     $scope.changeMonth = function (momentDate) {
-      $scope.calendarDate   = momentDate;
-      $scope.previousMonth  = moment(momentDate).subtract(1, 'month');
-      $scope.nextMonth      = moment(momentDate).add(1, 'month');
-      $scope.previousYear   = moment(momentDate).subtract(1, 'year');
-      $scope.nextYear       = moment(momentDate).add(1, 'year');
-      $scope.today          = moment();
+      var minDateOk = !momentDate.isBefore(CALENDAR_MIN_DATE);
 
-      $scope.calendarLoadData();
+      if (minDateOk) {
+        $scope.calendarDate   = momentDate;
+        $scope.previousMonth  = moment(momentDate).subtract(1, 'month');
+        $scope.nextMonth      = moment(momentDate).add(1, 'month');
+        $scope.previousYear   = moment(momentDate).subtract(1, 'year');
+        $scope.nextYear       = moment(momentDate).add(1, 'year');
+        $scope.today          = moment();
+
+        $scope.calendarLoadData();
+      }
     };
 
     $scope.showCalendarType = false;

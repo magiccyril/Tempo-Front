@@ -1,6 +1,6 @@
 #contact {
   @include grid-column(12);
-  @media #{$medium-up} {
+  @media #{$large-up} {
     @include grid-column(4);
   }
 
