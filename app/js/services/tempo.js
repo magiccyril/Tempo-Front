@@ -24,9 +24,9 @@ angular.module('tempoApp')
     'TEMPO_API_COUNT_WHITE',
     'TEMPO_API_COUNT_RED',
     function ($http, $q, TEMPO_API_URL, TEMPO_API_FROM_MONTH, TEMPO_API_FROM_DAY, TEMPO_API_COUNT_BLUE, TEMPO_API_COUNT_WHITE, TEMPO_API_COUNT_RED) {
-      var cacheMonth = {};
+      var cache = {};
 
-      var formatData = function (data) {
+      var formatColor = function (data) {
         switch (data) {
           case 'blue':
             return 'Bleu';
@@ -43,6 +43,11 @@ angular.module('tempoApp')
         var fromDate = moment();
         fromDate.month(TEMPO_API_FROM_MONTH - 1);
         fromDate.date(TEMPO_API_FROM_DAY);
+        fromDate.subtract(1, 'year');
+
+        if (moment().month() + 1 >= TEMPO_API_FROM_MONTH) {
+          fromDate.add(1, 'year');
+        }
 
         if (moment().isLeapYear()) {
           TEMPO_API_COUNT_BLUE = TEMPO_API_COUNT_BLUE + 1;
@@ -58,38 +63,62 @@ angular.module('tempoApp')
           });
       };
 
-      var getMonth = function (date) {
-        var dateKey = date.format('YYYY-MM');
+      var formatData = function (data) {
+        var formatedData = {};
 
-        if (cacheMonth[dateKey]) {
+        angular.forEach(data, function(item) {
+          var dayDate = moment(item.date.year + '-' + item.date.month + '-' + item.date.day, 'YYYY-M-D');
+          formatedData[dayDate.format('YYYY-MM-DD')] = {
+            'raw': item.color,
+            'formated': formatColor(item.color)
+          };
+        });
+
+        return formatedData;
+      };
+
+      var fetch = function (date) {
+        if (cache[date]) {
           var deferred = $q.defer();
-          deferred.resolve(cacheMonth[dateKey]);
+          deferred.resolve(cache[date]);
           return deferred.promise;
         }
-        else {
-          return $http.get(TEMPO_API_URL + '/tempo/' + dateKey)
-            .then(function (response) {
-              var data = response.data;
 
-              var formatedData = {};
-              for (var i = 0; i < data.length; i++) {
-                var day = data[i];
-                var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
-                formatedData[dayDate.format('YYYY-MM-DD')] = {
-                  'raw': day.color,
-                  'formated': formatData(day.color)
-                };
-              }
+        return $http.get(TEMPO_API_URL + '/tempo/' + date)
+          .then(function (response) {
+            cache[date] = formatData(response.data);
+            return cache[date];
+          });
+      };
 
-              cacheMonth[dateKey] = formatedData;
-              return formatedData;
-            });
+      var save = function (apikey, date, color) {
+        if (!date.isValid()) {
+          return $q.reject('Invalid date');
         }
+
+        if ('blue' !== color && 'white' !== color && 'red' !== color) {
+          return $q.reject('Invalid color');
+        }
+
+        var data = {
+          'year': date.format('YYYY'),
+          'month': date.format('M'),
+          'day': date.format('D'),
+          'color': color
+        };
+
+        return $http.post(TEMPO_API_URL + '/tempo?apikey=' + apikey, data);
       };
 
       return {
         'getCounter': getCounter,
-        'getMonth': getMonth
+        'getMonth': function (date) {
+          return fetch(date.format('YYYY-MM'));
+        },
+        'getYear': function (date) {
+          return fetch(date.format('YYYY'));
+        },
+        'save': save
       };
     }
   ]);

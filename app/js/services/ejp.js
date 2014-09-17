@@ -20,10 +20,17 @@ angular.module('tempoApp')
     'EJP_API_FROM_DAY',
     'EJP_API_COUNT',
     function ($http, $q, EJP_API_URL, EJP_API_FROM_MONTH, EJP_API_FROM_DAY, EJP_API_COUNT) {
+      var cache = {};
+
       var getCounter = function () {
         var fromDate = moment();
         fromDate.month(EJP_API_FROM_MONTH - 1);
         fromDate.date(EJP_API_FROM_DAY);
+        fromDate.subtract(1, 'year');
+
+        if (moment().month() + 1 >= EJP_API_FROM_MONTH) {
+          fromDate.add(1, 'year');
+        }
 
         return $http.get(EJP_API_URL + '/ejp/count/' + fromDate.format('YYYY-MM-DD')).then(function (response) {
             return {
@@ -35,32 +42,83 @@ angular.module('tempoApp')
           });
       };
 
-      var getZoneMonth = function (zone, date) {
-        return $http.get(EJP_API_URL + '/ejp/' + date.format('YYYY-MM'))
-          .then(function (response) {
-            var data = response.data;
+      var formatData = function (response) {
+        var data = response.data;
 
-            var formatedData = {};
-            for (var i = 0; i < data.length; i++) {
-              var day = data[i];
-              var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
+        var formatedData = {};
+        for (var i = 0; i < data.length; i++) {
+          var day = data[i];
+          var dayDate = moment(day.date.year + '-' + day.date.month + '-' + day.date.day, 'YYYY-M-D');
 
-              var raw = day.zones[zone];
-              var format = day.zones[zone] ? 'EJP' : '';
-
-              formatedData[dayDate.format('YYYY-MM-DD')] = {
-                raw: raw,
-                format: format
-              };
+          angular.forEach(day.zones, function(value, dayzone) {
+            if (!formatedData[dayzone]) {
+              formatedData[dayzone] = {};
             }
 
-            return formatedData;
+            var raw = value ? 'red' : 'white';
+            var format = value ? 'EJP' : '';
+
+            formatedData[dayzone][dayDate.format('YYYY-MM-DD')] = {
+              'raw': raw,
+              'formated': format
+            };
           });
+        }
+
+        return formatedData;
+      }
+
+      var fetch = function (zone, date) {
+        if (cache[date] && cache[date][zone]) {
+          var deferred = $q.defer();
+          deferred.resolve(cache[date][zone]);
+          return deferred.promise;
+        }
+        else {
+          return $http.get(EJP_API_URL + '/ejp/' + date)
+            .then(function (response) {
+              var formatedData = formatData(response);
+              cache[date] = formatedData;
+
+              return formatedData[zone];
+            });
+        }
+      }
+
+
+      var save = function (apikey, date, zones) {
+        if (!date.isValid()) {
+          return $q.reject('Invalid date');
+        }
+
+        var zonesValid = 'object' === typeof zones
+          && 'boolean' === typeof zones.north
+          && 'boolean' === typeof zones.paca
+          && 'boolean' === typeof zones.west
+          && 'boolean' === typeof zones.south;
+
+        if (!zonesValid) {
+          return $q.reject('Invalid zones');
+        }
+
+        var data = {
+          'year': date.format('YYYY'),
+          'month': date.format('M'),
+          'day': date.format('D'),
+          'zones': zones
+        };
+
+        return $http.post(EJP_API_URL + '/ejp?apikey=' + apikey, data);
       };
 
       return {
         'getCounter': getCounter,
-        'getMonth': getZoneMonth
+        'getMonth': function (zone, date) {
+          return fetch(zone, date.format('YYYY-MM'));
+        },
+        'getYear': function (zone, date) {
+          return fetch(zone, date.format('YYYY'));
+        }
       };
     }
   ]);
