@@ -162,11 +162,21 @@ module.exports = function(grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       options: {
-        cwd: '<%= yeoman.app %>'
+        cwd: '<%= yeoman.app %>',
       },
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath:  /\.\.\//,
+        exclude: [
+          /bower_components.modernizr.modernizr.js/,
+          /bower_components.jquery.dist.jquery.js/,
+          /bower_components.fastclick.lib.fastclick.js/,
+          /bower_components.jquery.cookie.jquery.cookie.js/,
+          /bower_components.jquery-placeholder.jquery.placeholder.js/,
+          /bower_components.foundation.js.foundation.js/,
+          /bower_components.angular-animate.angular-animate.js/,
+          /bower_components.angular-route.angular-route.js/
+        ]
       },
       sass: {
         src: ['<%= yeoman.app %>/css/{,*/}*.{scss,sass}'],
