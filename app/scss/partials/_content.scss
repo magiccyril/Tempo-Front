@@ -1,6 +1,0 @@
-#content {
-  @include grid-column(12);
-  @media #{$large-up} {
-    @include grid-column(8);
-  }
-}
