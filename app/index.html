@@ -1,9 +1,12 @@
 <!doctype html>
-<html class="no-js" lang="fr">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Frame-Options" content="deny">
+    <link rel="canonical" href="http://tempo.18ruedivona.eu" />
     <title>EDF Tempo &amp; EJP</title>
+    <meta name="keywords" content="EDF, Tempo, EJP, couleur du jour, couleur de demain" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.tmp) css/app.css -->
     <link rel="stylesheet" href="css/app.css">
@@ -12,7 +15,7 @@
   <body ng-app="tempoApp">
     <div ng-controller="MainCtrl">
       <div class="row row-no-margin">
-        <div id="site-title" class="">
+        <div id="site-title" ng-class="{'site-title-white': 'white' == forecast.today.tempo.raw, 'site-title-red': 'red' == forecast.today.tempo.raw}">
           <h1>EDF Tempo &amp; EJP</h1>
           <h2 class="h6">La couleur du jour de votre abonnement EDF Tempo et EJP, et celle du lendemain, tous les jours, dès 17h.</h2>
         </div>
@@ -166,9 +169,15 @@
         <p>Une journée Tempo commence à 6h du matin et est découpée en deux périodes :</p>
         <ul><li>Période heures pleines : de 6h à 22h.</li><li>Période heures creuses : de 22h à 6h.</li></ul>
         <p>Pour plus d’information, consultez le <a href="http://bleuciel.edf.com/abonnement-et-contrat/les-prix/les-prix-de-l-electricite/option-tempo/en-savoir-plus-52429.html">site officiel EDF Tempo</a>.</p>
+        <p>Ce site vous permet de connaitre la couleur Tempo du jour, ainsi que celle du lendemain dès 17h (dépendant de l’heure de disponibilité de l’information par EDF), et de parcourir l’historique complet depuis 2005.</p>
 
-        <h3>EJP</h3>
-        <p>Lorem ipsum</h3>
+        <h3><abbr title="Effacement des Jours de Pointe">EJP</abbr></h3>
+        <p><abbr title="Effacement des Jours de Pointe">EJP</abbr> est également un abonnement EDF, mais il n'est plus possible de souscrire à cette option.</p>
+        <p>Avec l'option EJP, l'année est divisée en 343 jours à un tarif avantageux, et 22 jours à un prix du kWh plus élevé. Les jours EJP sont répartis entre le 1er novembre et le 31 mars.</p>
+        <p>Pour plus d'information, consultez le <a href="https://particuliers.edf.com/gestion-de-mon-contrat/options-tarifaires/option-ejp/details-de-l-option-52420.html">site officiel EDF EJP</a>.</p>
+
+        <h3>Le site</h3>
+        <p>L’information fournie n’est en rien officielle, et n’est nullement contractuelle. Seules les informations fournies par votre compteur et votre boitier sont contractuelles.</p>
       </div>
       <div id="contact" ng-controller="ContactCtrl">
         <h2 class="h6"><i class="icon-comment"></i>Contact</h2>
