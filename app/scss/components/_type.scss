@@ -185,3 +185,21 @@ abbr {
     }
   }
 }
+
+.warning {
+  background-color: $warning-color;
+  border-color: scale-color($warning-color, $lightness: -14%);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+
+  a {
+    color: $body-font-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: $secondary-color;
+      text-decoration: none;
+    }
+  }
+}
