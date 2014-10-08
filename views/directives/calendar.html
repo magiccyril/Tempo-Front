@@ -1,0 +1,1 @@
+<table> <tbody> <tr ng-repeat="(weekNumber, days) in calendar"> <td ng-repeat="day in days" ng-class="day.cssClass"> <span class="day" ng-show="day.isGoodMonth">{{ day.format }}</span> <span class="data" ng-show="day.isGoodMonth">{{ day.data }}</span>    </table>
