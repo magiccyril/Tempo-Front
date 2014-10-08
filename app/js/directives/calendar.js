@@ -57,6 +57,6 @@ angular.module('tempoApp')
         date: '=date',
         events:'=ngModel'
       },
-      templateUrl: '/js/directives/calendar.html'
+      templateUrl: 'js/directives/calendar.html'
     };
   }]);
