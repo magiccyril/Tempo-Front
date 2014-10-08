@@ -31,7 +31,7 @@ angular.module('tempoApp')
       scope: {
         model:'=ngModel'
       },
-      templateUrl: 'js/directives/ejpForecastItem.html',
+      templateUrl: 'views/directives/ejpForecastItem.html',
       transclude: true
     };
   }]);
