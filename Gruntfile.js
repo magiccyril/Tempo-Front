@@ -314,7 +314,7 @@ module.exports = function(grunt) {
           conservativeCollapse: true,
           collapseBooleanAttributes: true,
           removeCommentsFromCDATA: true,
-          removeOptionalTags: true
+          removeOptionalTags: false
         },
         files: [{
           expand: true,
@@ -336,6 +336,24 @@ module.exports = function(grunt) {
           src: '*.js',
           dest: '.tmp/concat/js'
         }]
+      }
+    },
+
+    // replace some parts in html by anothers.
+    htmlrefs: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>',
+          src: ['index.html'],
+          dest: '<%= yeoman.dist %>'
+        }],
+        options: {
+          includes: {
+            ads: '<%= yeoman.app %>/partials/ads.html',
+            analytics: '<%= yeoman.app %>/partials/ga.html',
+          }
+        }
       }
     },
 
@@ -435,6 +453,7 @@ module.exports = function(grunt) {
     'concat',
     'ngmin',
     'copy:dist',
+    'htmlrefs',
     'cdnify',
     'cssmin',
     'uglify',
