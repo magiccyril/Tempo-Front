@@ -49,25 +49,25 @@ angular.module('tempoApp')
           break;
 
         case 'ejp-north':
-          EJP.getMonth('north', $scope.calendarDate).then(function (data) {
+          EJP.getMonthByZone('north', $scope.calendarDate).then(function (data) {
             $scope.calendarEvents = data;
           });
           break;
 
         case 'ejp-paca':
-          EJP.getMonth('paca', $scope.calendarDate).then(function (data) {
+          EJP.getMonthByZone('paca', $scope.calendarDate).then(function (data) {
             $scope.calendarEvents = data;
           });
           break;
 
         case 'ejp-west':
-          EJP.getMonth('west', $scope.calendarDate).then(function (data) {
+          EJP.getMonthByZone('west', $scope.calendarDate).then(function (data) {
             $scope.calendarEvents = data;
           });
           break;
 
         case 'ejp-south':
-          EJP.getMonth('south', $scope.calendarDate).then(function (data) {
+          EJP.getMonthByZone('south', $scope.calendarDate).then(function (data) {
             $scope.calendarEvents = data;
           });
           break;
