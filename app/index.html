@@ -14,10 +14,12 @@
   </head>
   <body ng-app="tempoApp">
     <div ng-controller="MainCtrl">
-      <div class="row row-no-margin">
-        <div id="site-title" ng-class="{'site-title-white': 'white' == forecast.today.tempo.raw, 'site-title-red': 'red' == forecast.today.tempo.raw}">
-          <h1>EDF Tempo &amp; EJP</h1>
-          <h2 class="h6">La couleur du jour de votre abonnement EDF Tempo et EJP, et celle du lendemain, tous les jours, dès 17h.</h2>
+      <div id="site-title-bg" ng-class="{'site-title-blue': 'blue' == forecast.today.tempo.raw, 'site-title-white': 'white' == forecast.today.tempo.raw, 'site-title-red': 'red' == forecast.today.tempo.raw}">
+        <div class="row row-no-margin">
+          <div id="site-title">
+            <h1>EDF Tempo &amp; EJP</h1>
+            <h2 class="h6">La couleur du jour de votre abonnement EDF Tempo et EJP, et celle du lendemain, tous les jours, dès 17h.</h2>
+          </div>
         </div>
       </div>
 

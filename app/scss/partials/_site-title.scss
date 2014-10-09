@@ -1,8 +1,23 @@
-#site-title {
-  @include grid-column(12);
-
+#site-title-bg {
   background-color: $blue;
   border-top: 1rem solid darken($blue, 10);
+
+  &.site-title-white {
+    background-color: $white;
+    border-top: 1rem solid darken($white, 10);
+
+    h1 {
+      color: $body-font-color;
+    }
+  }
+  &.site-title-red {
+    background-color: $red;
+    border-top: 1rem solid darken($red, 10);
+  }
+}
+
+#site-title {
+  @include grid-column(12);
 
   h1 {
     @extend %josefin;
@@ -21,18 +36,5 @@
     @media #{$medium-up} {
       margin-top: -0.5rem;
     }
-  }
-
-  &.site-title-white {
-    background-color: $white;
-    border-top: 1rem solid darken($white, 10);
-
-    h1 {
-      color: $body-font-color;
-    }
-  }
-  &.site-title-red {
-    background-color: $red;
-    border-top: 1rem solid darken($red, 10);
   }
 }

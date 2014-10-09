@@ -33,7 +33,7 @@ $include-html-global-classes: $include-html-classes;
 $include-html-grid-classes: false;
 // $include-xl-html-grid-classes: false;
 
-$row-width: 100%;
+$row-width: rem-calc(1440);
 // $total-columns: 12;
 
 // Global
