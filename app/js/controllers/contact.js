@@ -49,6 +49,10 @@ angular.module('tempoApp').controller('ContactCtrl', ['$scope', 'Mandrill', 'CON
         $scope.contactStatus.pending = false;
         $scope.contactStatus.error = true;
       });
+
+      if (window.ga) {
+        ga('send', 'event', 'contact', 'send', $scope.email, {nonInteraction: true});
+      }
     };
 
     $scope.resetForm = function () {

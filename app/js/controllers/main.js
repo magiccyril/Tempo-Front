@@ -20,6 +20,10 @@ angular.module('tempoApp')
     $scope.onCalendarTypeChange = function () {
       $scope.showCalendarType = false;
       $scope.calendarLoadData();
+
+      if (window.ga) {
+        ga('send', 'event', 'calendar-type', 'change', $scope.calendarType, {nonInteraction: true});
+      }
     };
     $scope.calendarTypeFormat = function (type) {
       switch (type) {
@@ -86,6 +90,10 @@ angular.module('tempoApp')
         $scope.today          = moment();
 
         $scope.calendarLoadData();
+
+        if (window.ga) {
+          ga('send', 'event', 'calendar-date', 'change', momentDate.format('YYYY/MM/DD'), {nonInteraction: true});
+        }
       }
     };
 
