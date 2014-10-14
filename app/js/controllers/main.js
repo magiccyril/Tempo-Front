@@ -11,7 +11,7 @@ angular.module('tempoApp')
   .constant('CALENDAR_MIN_DATE', '2004-09-01')
   .controller('MainCtrl', ['$scope', 'CALENDAR_MIN_DATE', 'Forecast', 'Tempo', 'EJP', function ($scope, CALENDAR_MIN_DATE, Forecast, Tempo, EJP) {
     $scope.isOffPeak = function () {
-      return ((moment().hours >= 0 && moment.hours < 6) || (moment().hours > 22 && moment.hours <= 23));
+      return ((moment().hours() >= 0 && moment().hours() < 6) || (moment().hours() > 22 && moment().hours() <= 23));
     };
 
     $scope.onCalendarTypeClick = function () {
