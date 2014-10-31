@@ -44,14 +44,7 @@
               <span class="forecast-tempo-day-red" ng-show="'red' == forecast.tomorrow.tempo.raw">Rouge</span>
               Demain,<br/>{{ tomorrowDate.format('dddd DD MMMM YYYY') }}
             </div>
-            <div class="forecast-tempo-hour-vertical">
-              <span class="forecast-tempo-hour-vertical-peak" ng-hide="isOffPeak()" title="Heures pleines">Heures pleines</span>
-              <span class="forecast-tempo-hour-vertical-offpeak" ng-show="isOffPeak()" title="Heures creuses">Heures creuses</span>
-            </div>
-            <div class="forecast-tempo-hour-horizontal">
-              <span class="forecast-tempo-hour-horizontal-peak" ng-hide="isOffPeak()" title="Heures pleines">Heures pleines</span>
-              <span class="forecast-tempo-hour-horizontal-offpeak" ng-show="isOffPeak()" title="Heures creuses">Heures creuses</span>
-            </div>
+
             <div class="forecast-tempo-counter">
                 <span class="forecast-tempo-counter-blue">{{ tempoCounter.blue }} jours bleu</span> jusqu'au 31 aout.<br/>
                 <span class="forecast-tempo-counter-white">{{ tempoCounter.white }} jours blanc</span> jusqu'au 30 avril.<br/>

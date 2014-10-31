@@ -44,58 +44,11 @@
     @include forecast-tempo-sprite(red);
   }
 
-  .forecast-tempo-hour-vertical {
-    @include grid-column(1);
-
-    @media #{$small-only} {
-      display: none !important;
-    }
-  }
-
-  .forecast-tempo-hour-vertical-peak,
-  .forecast-tempo-hour-vertical-offpeak {
-    @include hide-text(left);
-    display: block;
-    height: 175px;
-    width: 64px;
-  }
-  .forecast-tempo-hour-vertical-peak {
-    @include forecast-tempo-sprite(peakVertical);
-  }
-  .forecast-tempo-hour-vertical-offpeak {
-    @include forecast-tempo-sprite(offPeakVertical);
-  }
-
-  .forecast-tempo-hour-horizontal {
-    @include grid-column(12);
-    margin-bottom: 2rem;
-
-    @media #{$medium-up} {
-      display: none !important;
-    }
-  }
-  .forecast-tempo-hour-horizontal-peak,
-  .forecast-tempo-hour-horizontal-offpeak {
-    @include hide-text(left);
-    display: block;
-    height: 64px;
-    width: 100%;
-  }
-  .forecast-tempo-hour-horizontal-peak {
-    @include forecast-tempo-sprite(peakHorizontal);
-    background-position-x: center;
-  }
-  .forecast-tempo-hour-horizontal-offpeak {
-    @include forecast-tempo-sprite(offPeakHorizontal);
-    background-position-x: center;
-  }
-
-
   .forecast-tempo-counter {
     @include grid-column(12);
 
     @media #{$large-up} {
-      @include grid-column(5);
+      @include grid-column(6);
     }
   }
 
