@@ -124,6 +124,7 @@
 
   .forecast-ejp-ads {
     @include grid-column(12);
+    text-align: center;
 
     @media #{$large-up} {
       @include grid-column(3);
