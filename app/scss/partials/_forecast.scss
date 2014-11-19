@@ -123,11 +123,10 @@
   }
 
   .forecast-ejp-ads {
-    display: none;
+    @include grid-column(12);
 
     @media #{$large-up} {
       @include grid-column(3);
-      display: block;
     }
   }
 }
