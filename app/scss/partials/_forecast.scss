@@ -55,20 +55,23 @@
   .forecast-tempo-counter-blue {
     @include button-base;
     @include button-size($padding:$button-sml);
-    @include button-style($bg:$blue, $radius:true);
+    @include button-style($bg:$blue, $radius:true, $bg-hover:$blue);
     @include single-transition(background-color);
+    cursor: $button-disabled-cursor;
   }
   .forecast-tempo-counter-white {
     @include button-base;
     @include button-size($padding:$button-sml);
-    @include button-style($bg:$white, $radius:true);
+    @include button-style($bg:$white, $radius:true, $bg-hover:$white);
     @include single-transition(background-color);
+    cursor: $button-disabled-cursor;
   }
   .forecast-tempo-counter-red {
     @include button-base;
     @include button-size($padding:$button-sml);
-    @include button-style($bg:$red, $radius:true);
+    @include button-style($bg:$red, $radius:true, $bg-hover:$red);
     @include single-transition(background-color);
+    cursor: $button-disabled-cursor;
   }
 
   .forecast-ejp-table {
