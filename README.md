@@ -1,6 +1,6 @@
-# Foundation libsass template
+# Tempo Front
 
-This is a template to start your own project that uses Grunt and libsass!
+This is a the frontend of tempo.18ruedivona.eu
 
 ## Requirements
 
@@ -10,20 +10,13 @@ You'll need to have the following items installed before continuing.
   * [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
   * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
 
-## Quickstart
+Or Docker + Docker compose.
+
+## Quickstart with Docker
 
 ```bash
-git clone git@github.com:zurb/foundation-libsass-template.git
-npm install && bower install
+git clone https://github.com/magiccyril/Tempo-Front.git
+sudo docker-compose up
 ```
 
-While you're working on your project, run:
-
-`grunt`
-
 And you're set!
-
-## Directory Structure
-
-  * `scss/_settings.scss`: Foundation configuration settings go in here
-  * `scss/app.scss`: Application styles go here
