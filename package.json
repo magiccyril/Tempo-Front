@@ -1,6 +1,10 @@
 {
   "name": "Tempo",
   "version": "0.0.1",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/magiccyril/Tempo-Front"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
