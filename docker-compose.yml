@@ -1,0 +1,11 @@
+web:
+  build: .
+  command: serve
+  ports:
+   - "80:9000"
+  volumes_from:
+   - data
+data:
+  image: magiccyril/data
+  volumes:
+     - .:/data
