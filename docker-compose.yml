@@ -3,6 +3,7 @@ web:
   command: serve
   ports:
    - "80:9000"
+   - "35729:35729"
   volumes_from:
    - data
 data:
