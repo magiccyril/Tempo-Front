@@ -27,7 +27,10 @@ angular.module('tempoApp')
 
               if (scope.events[date.format('YYYY-MM-DD')]) {
                 cssClass = scope.events[date.format('YYYY-MM-DD')].raw;
-                data     = scope.events[date.format('YYYY-MM-DD')].formated;
+                if (typeof scope.events[date.format('YYYY-MM-DD')].raw === 'boolean') {
+                  cssClass = scope.events[date.format('YYYY-MM-DD')].raw ? 'red': 'white';
+                }
+                data = scope.events[date.format('YYYY-MM-DD')].formated;
               }
 
               calendar[i].push({

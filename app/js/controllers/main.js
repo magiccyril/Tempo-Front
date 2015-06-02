@@ -9,7 +9,7 @@
  */
 angular.module('tempoApp')
   .constant('CALENDAR_MIN_DATE', '2004-09-01')
-  .controller('MainCtrl', ['$scope', 'CALENDAR_MIN_DATE', 'Forecast', 'Tempo', 'EJP', function ($scope, CALENDAR_MIN_DATE, Forecast, Tempo, EJP) {
+  .controller('MainCtrl', ['$scope', 'CALENDAR_MIN_DATE', 'divonaNgEdf.Forecast', 'divonaNgEdf.Tempo', 'divonaNgEdf.Ejp', function ($scope, CALENDAR_MIN_DATE, Forecast, Tempo, EJP) {
     $scope.onCalendarTypeClick = function () {
       $scope.showCalendarType = !$scope.showCalendarType;
     };

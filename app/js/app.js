@@ -11,5 +11,7 @@
 angular
   .module('tempoApp', [
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'divonaNgMandrill',
+    'divonaNgEdf'
   ]);
