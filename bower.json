@@ -9,7 +9,7 @@
     "moment": "~2.8.2",
     "REM-unit-polyfill": "~1.3.2",
     "divona-ngMandrill": "git://github.com/magiccyril/DivonaNgMandrill.git",
-    "divona-ngEdf": "git://github.com/magiccyril/DivonaNgEdf.git"
+    "divona-ngEdf": "git://github.com/magiccyril/DivonaNgEdf.git",
   },
   "devDependencies": {
     "angular-mocks": "1.3.15",
