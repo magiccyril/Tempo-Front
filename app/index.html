@@ -33,17 +33,17 @@
 
           <div class="row" id="forecast-tempo">
             <div class="forecast-tempo-day">
-              <span class="forecast-tempo-day-undefined" ng-show="!forecast.today.tempo">Non déterminé</span>
-              <span class="forecast-tempo-day-blue" ng-show="'blue' == forecast.today.tempo.raw">Bleu</span>
-              <span class="forecast-tempo-day-white" ng-show="'white' == forecast.today.tempo.raw">Blanc</span>
-              <span class="forecast-tempo-day-red" ng-show="'red' == forecast.today.tempo.raw">Rouge</span>
+              <span class="forecast-tempo-day-undefined" ng-if="!forecast.today.tempo">Non déterminé</span>
+              <span class="forecast-tempo-day-blue" ng-if="'blue' == forecast.today.tempo.raw">Bleu</span>
+              <span class="forecast-tempo-day-white" ng-if="'white' == forecast.today.tempo.raw">Blanc</span>
+              <span class="forecast-tempo-day-red" ng-if="'red' == forecast.today.tempo.raw">Rouge</span>
               Aujourd'hui,<br/>{{ today.format('dddd DD MMMM YYYY') }}
             </div>
             <div class="forecast-tempo-day">
-              <span class="forecast-tempo-day-undefined" ng-show="!forecast.tomorrow.tempo">Non déterminé</span>
-              <span class="forecast-tempo-day-blue" ng-show="'blue' == forecast.tomorrow.tempo.raw">Bleu</span>
-              <span class="forecast-tempo-day-white" ng-show="'white' == forecast.tomorrow.tempo.raw">Blanc</span>
-              <span class="forecast-tempo-day-red" ng-show="'red' == forecast.tomorrow.tempo.raw">Rouge</span>
+              <span class="forecast-tempo-day-undefined" ng-if="!forecast.tomorrow.tempo">Non déterminé</span>
+              <span class="forecast-tempo-day-blue" ng-if="'blue' == forecast.tomorrow.tempo.raw">Bleu</span>
+              <span class="forecast-tempo-day-white" ng-if="'white' == forecast.tomorrow.tempo.raw">Blanc</span>
+              <span class="forecast-tempo-day-red" ng-if="'red' == forecast.tomorrow.tempo.raw">Rouge</span>
               Demain,<br/>{{ tomorrowDate.format('dddd DD MMMM YYYY') }}
             </div>
 
